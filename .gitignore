@@ -1,0 +1,7 @@
+*.txt
+*.mp4
+*.mpg
+*.mpeg
+news_out/
+ngc_out/
+ftfm_out/
