@@ -46,11 +46,6 @@ for i in range(len(gaussian)):
     first_col.title.set_text(s1_acc)
     plt.imshow(temp1, cmap=plt.cm.gray)
     plt.axis('off')
-    # if os.path.exists("M1_S1_" + str(n) + ".png"):
-    #     os.remove("M1_S1_" + str(n) + ".png")
-    # else:
-    #     print("M1_S1_" + str(n) + ".png does not exist")
-    # cv2.imwrite("M1_S1_" + str(n) + ".png", temp1)
 
     gmm_labels2 = gmm_model.predict(img2_resize)
 
@@ -77,11 +72,5 @@ for i in range(len(gaussian)):
     second_col.title.set_text(s2_acc)
     plt.imshow(temp2, cmap=plt.cm.gray)
     plt.axis('off')
-
-    # if os.path.exists("M1_S2_" + str(n) + ".png"):
-    #     os.remove("M1_S2_" + str(n) + ".png")
-    # else:
-    #     print("M1_S2_" + str(n) + ".png does not exist")
-    # cv2.imwrite("M1_S2_" + str(n) + ".png", temp2)
 
 plt.show()
