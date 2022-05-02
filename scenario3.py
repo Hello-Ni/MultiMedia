@@ -15,14 +15,13 @@ img2 = cv2.imread('soccer2.jpg')
 img1_resize = img1.reshape((-1, 3))
 img2_resize = img2.reshape((-1, 3))
 two_image = np.concatenate((img1_resize, img2_resize))
-
 fig = plt.figure(figsize=(40, 20))
 fig.suptitle('Scenario3 Accuracy', fontsize=20)
 gaussian = [2, 5, 8, 11, 14, 17, 20, 23]
 
 for i in range(len(gaussian)):
     n = gaussian[i]
-    gmm_model = GMM(n_components=n, covariance_type='tied').fit(two_image)
+    gmm_model = GMM(n_components=n, covariance_type='tied').fit(img1_resize)
     gmm_labels1 = gmm_model.predict(img1_resize)
     gmm_labels2 = gmm_model.predict(img2_resize)
 

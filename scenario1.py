@@ -21,7 +21,7 @@ gaussian = [2, 5, 8, 11, 14, 17, 20, 23]
 
 for i in range(len(gaussian)):
     n = gaussian[i]
-    gmm_model = GMM(n_components=n, covariance_type='tied').fit(img1_resize)
+    gmm_model = GMM(n_components=n, covariance_type='tied').fit(img2_resize)
     gmm_labels1 = gmm_model.predict(img1_resize)
 
     # choose the gaussian that represent the green ground
