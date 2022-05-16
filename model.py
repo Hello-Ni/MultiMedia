@@ -8,6 +8,27 @@ import matplotlib.pyplot as plt
 data_path = "data_json"
 
 
+def plot_history(history):
+    # list all data in history
+    print(history.history.keys())
+    # summarize history for accuracy
+    plt.plot(history.history['accuracy'])
+    plt.plot(history.history['val_accuracy'])
+    plt.title('model accuracy')
+    plt.ylabel('accuracy')
+    plt.xlabel('epoch')
+    plt.legend(['train', 'val'], loc='upper left')
+    plt.show()
+    # summarize history for loss
+    plt.plot(history.history['loss'])
+    plt.plot(history.history['val_loss'])
+    plt.title('model loss')
+    plt.ylabel('loss')
+    plt.xlabel('epoch')
+    plt.legend(['train', 'val'], loc='upper left')
+    plt.show()
+
+
 def load_data(data_path):
     print("Data loading\n")
     with open(data_path, "r") as fp:
@@ -69,20 +90,16 @@ if __name__ == "__main__":
     model.summary()
 
     # train model
-
-    # history = model.fit(x_train, y_train, validation_data=(
-    #    x_val, y_val), batch_size=32, epochs=50)
+    history = model.fit(x_train, y_train, validation_data=(
+        x_val, y_val), batch_size=32, epochs=50)
 
     # plot accuracy/error for training and validation
-    # plot_history(history)
+    plot_history(history)
     # evaluate model on test set
 
-    #test_loss, test_acc = model.evaluate(x_test, y_test, verbose=2)
-    #print('\nTest accuracy:', test_acc)
-    # model.save("model_RNN_LSTM.h5")
-    #print("Saved model to disk")
+    test_loss, test_acc = model.evaluate(x_test, y_test, verbose=2)
+    print('\nTest accuracy:', test_acc)
+    model.save("model_RNN_LSTM.h5")
+    print("Saved model to disk")
 
-    model = tf.keras.models.load_model("model_RNN_LSTM.h5")
-    print(x_test[0].shape)
-    print(x_train[0].shape)
-    print(model.predict(x_test))
+    #model = tf.keras.models.load_model("model_RNN_LSTM.h5")
